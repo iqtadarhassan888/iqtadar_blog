@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :articles
+  has_many :articles, dependent: :destroy
   before_save { self.email = email.downcase } #before saving email we convrt into downcase
   validates :username, presence: true, 
   uniqueness: { case_sensitive: false }, #doesnot matter if it is in capslock or  small... it should not be same
